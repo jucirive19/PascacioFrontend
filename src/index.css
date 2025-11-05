@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+/* Joystick Styles - Solo para móviles */
+.joystick-mobile-only {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  width: 160px !important;
+  height: 160px !important;
+  z-index: 1000 !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  touch-action: none !important;
+  display: none; /* Oculto por defecto */
+}
+
+/* Mostrar joystick en todos los dispositivos para pruebas */
+.joystick-mobile-only {
+  display: block !important;
+}
+
+/* Mostrar solo en dispositivos móviles (comentado para pruebas) */
+/* @media (max-width: 768px), (pointer: coarse) {
+  .joystick-mobile-only {
+    display: block !important;
+  }
+} */
+
+/* Estilos del joystick nipple */
+.nipple {
+  opacity: 0.9 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.nipple .front {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+}
+
+.nipple .back {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Animación suave para el joystick */
+.nipple .front,
+.nipple .back {
+  transition: all 0.1s ease !important;
+}
+
+/* Estados de interacción */
+.nipple.active .front {
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Indicador de controles de teclado */
+.keyboard-controls-indicator {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Mostrar indicador solo en desktop */
+@media (max-width: 768px), (pointer: coarse) {
+  .keyboard-controls-indicator {
+    display: none !important;
+  }
+}
