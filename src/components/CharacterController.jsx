@@ -173,8 +173,12 @@ export const CharacterController = ({
 
     const handleFormSubmit = useCallback(async (formData) => {
         try {
-            const response = await fetch('http://localhost:3000/api/feedback', {  //colocar la api del frontend
-                
+            // Obtener URL del backend desde variables de entorno
+            const backendUrl = import.meta.env.MODE === 'development' 
+                ? import.meta.env.VITE_BACKEND_URL_DEVELOPMENT || 'http://localhost:3000'
+                : import.meta.env.VITE_API_URL_PRODUCTION_1 || 'http://localhost:3000';
+            
+            const response = await fetch(`${backendUrl}/api/feedback`, {
                 method: 'POST',
                 mode: 'cors',
                 credentials: 'include',

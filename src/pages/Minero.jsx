@@ -13,8 +13,10 @@ import pregunta4 from '../assets/sounds/pregunta4.wav';
 import pregunta5 from '../assets/sounds/prehunta5.wav';
 import pregunta6 from '../assets/sounds/pregunta6.wav';
 
-// URL del backend
-const BACKEND_URL = 'http://localhost:3000';
+// URL del backend - usar variables de entorno
+const BACKEND_URL = import.meta.env.MODE === 'development' 
+  ? import.meta.env.VITE_BACKEND_URL_DEVELOPMENT || 'http://localhost:3000'
+  : import.meta.env.VITE_API_URL_PRODUCTION_1 || 'http://localhost:3000';
 
 // Obtener las preguntas del backend
 const obtenerPreguntas = async () => {
